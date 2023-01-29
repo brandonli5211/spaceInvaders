@@ -6,8 +6,8 @@ import java.util.ArrayList;
 public class GameScreen extends JPanel implements ActionListener {
     private Timer timer;
     private Player player;
-    private ArrayList<Enemy> enemies;
-    private ArrayList<Projectile> projectiles;
+//    private ArrayList<Enemy> enemies;
+//    private ArrayList<Projectile> projectiles;
 
     public GameScreen() {
         setSize(600, 800);
@@ -23,17 +23,41 @@ public class GameScreen extends JPanel implements ActionListener {
             @Override
             public void keyPressed(KeyEvent e) {
                 super.keyPressed(e);
+
+                int key = e.getKeyCode();
+
+                if (key == KeyEvent.VK_A) {
+                    player.setDx(-20);
+                }
+
+                if (key == KeyEvent.VK_RIGHT) {
+                    player.setDx(20);
+                }
+
+                if (key == KeyEvent.VK_SPACE) {
+                    player.fire();
+                }
             }
 
             @Override
             public void keyReleased(KeyEvent e) {
                 super.keyReleased(e);
+
+                int key = e.getKeyCode();
+
+                if (key == KeyEvent.VK_LEFT) {
+                    player.setDx(0);
+                }
+
+                if (key == KeyEvent.VK_RIGHT) {
+                    player.setDx(0);
+                }
             }
         });
 
         player = new Player(300, 500, new ImageIcon("src/images/spaceship.png").getImage()); // initialize player
-        enemies = new ArrayList<Enemy>();
-        projectiles = new ArrayList<Projectile>();
+//        enemies = new ArrayList<Enemy>();
+//        projectiles = new ArrayList<Projectile>();
 
         // add enemies to the enemies list
 
@@ -51,15 +75,17 @@ public class GameScreen extends JPanel implements ActionListener {
         g.fillRect(player.getX(), player.getY(), 50, 50);
         g2d.draw(pRect);
 
-        // draw enemies
+ /*       // draw enemies
         for (Enemy enemy : enemies) {
             g2d.drawImage(enemy.getImage(), enemy.getX(), enemy.getY(), this);
         }
-
+*/
         // draw projectiles
+/*
         for (Projectile projectile : projectiles) {
             g2d.drawImage(projectile.getImage(), projectile.getX(), projectile.getY(), this);
         }
+*/
 
         g.dispose();
     }
@@ -67,16 +93,18 @@ public class GameScreen extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // update player position
         player.move();
-
+/*
         // update enemy positions
         for (Enemy enemy : enemies) {
             enemy.move();
-        }
+        }*/
 
         // update projectile positions
+/*
         for (Projectile projectile : projectiles) {
             projectile.move();
         }
+*/
 
         // check for collisions
         checkCollisions();
@@ -85,7 +113,7 @@ public class GameScreen extends JPanel implements ActionListener {
     }
 
     public void checkCollisions() {
-        // check for collisions between projectiles and enemies
+      /*  // check for collisions between projectiles and enemies
         for (Projectile projectile : projectiles) {
             for (Enemy enemy : enemies) {
                 if (projectile.getBounds().intersects(enemy.getBounds())) {
@@ -104,6 +132,6 @@ public class GameScreen extends JPanel implements ActionListener {
                 player.takeDamage(enemy.getDamage());
 
             }
-        }
+        }*/
     }
 }

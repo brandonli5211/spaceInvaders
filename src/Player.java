@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class Player extends JPanel implements KeyListener {
+public class Player extends JPanel {
     private int x;
     private int y;
     private int dx;
@@ -19,43 +19,6 @@ public class Player extends JPanel implements KeyListener {
 
     public void move() {
         x += dx;
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        int key = e.getKeyCode();
-
-        System.out.println(key);
-        if (key == KeyEvent.VK_A) {
-            System.out.println("right");
-            dx = -20;
-        }
-
-        if (key == KeyEvent.VK_RIGHT) {
-            dx = 20;
-        }
-
-        if (key == KeyEvent.VK_SPACE) {
-            fire();
-        }
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        int key = e.getKeyCode();
-
-        if (key == KeyEvent.VK_LEFT) {
-            dx = 0;
-        }
-
-        if (key == KeyEvent.VK_RIGHT) {
-            dx = 0;
-        }
     }
 
     public void fire() {
@@ -76,6 +39,11 @@ public class Player extends JPanel implements KeyListener {
 
     public int getY() {
         return y;
+    }
+
+    public void setDx(int dx) {
+        System.out.println("change");
+        this.dx = dx;
     }
 
     public Rectangle getBounds() {
