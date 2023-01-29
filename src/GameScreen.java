@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 
 public class GameScreen extends JPanel implements ActionListener {
@@ -15,6 +14,22 @@ public class GameScreen extends JPanel implements ActionListener {
         setFocusable(true);
         setBackground(Color.black);
 
+        addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                super.keyReleased(e);
+            }
+        });
 
         player = new Player(300, 500, new ImageIcon("src/images/spaceship.png").getImage()); // initialize player
         enemies = new ArrayList<Enemy>();

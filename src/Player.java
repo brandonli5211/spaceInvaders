@@ -1,7 +1,9 @@
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class Player {
+public class Player extends JPanel implements KeyListener {
     private int x;
     private int y;
     private int dx;
@@ -19,10 +21,18 @@ public class Player {
         x += dx;
     }
 
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
 
-        if (key == KeyEvent.VK_LEFT) {
+        System.out.println(key);
+        if (key == KeyEvent.VK_A) {
+            System.out.println("right");
             dx = -20;
         }
 
@@ -35,6 +45,7 @@ public class Player {
         }
     }
 
+    @Override
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
 
